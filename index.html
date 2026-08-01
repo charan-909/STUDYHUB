@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Study Log — Evidence Tracker</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Study Log" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="dashboard">
+      <p class="eyebrow" id="today-date"></p>
+
+      <div class="stats-row">
+        <div>
+          <p class="stat-num" id="streak-num">0</p>
+          <p class="stat-label">Day streak</p>
+        </div>
+        <div class="stat-secondary">
+          <p class="stat-num-sm" id="total-num">0</p>
+          <p class="stat-label">Total days logged</p>
+        </div>
+      </div>
+
+      <button class="btn-primary" id="add-btn" type="button">+ Add today's study session</button>
+    </header>
+
+    <main>
+      <div class="search-wrap">
+        <span class="search-icon">⌕</span>
+        <input type="search" id="search-input" placeholder="Search by chapter…" />
+      </div>
+
+      <div id="timeline" class="timeline"></div>
+      <p id="empty-state" class="empty-state" hidden></p>
+    </main>
+  </div>
+
+  <!-- Add session modal -->
+  <div id="modal-backdrop" class="modal-backdrop" hidden></div>
+  <div id="modal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-grabber"><span></span></div>
+
+    <div class="modal-header">
+      <div>
+        <p class="eyebrow" id="modal-step-label">Step 1 of 3 · Subject</p>
+        <h2 class="modal-title" id="modal-title">Add study session</h2>
+      </div>
+      <button class="icon-btn" id="modal-close" type="button" aria-label="Close">✕</button>
+    </div>
+
+    <div class="modal-body" id="modal-body"><!-- rendered by JS --></div>
+
+    <div class="modal-footer" id="modal-footer"><!-- rendered by JS --></div>
+  </div>
+
+  <script src="js/storage.js"></script>
+  <script src="js/date-utils.js"></script>
+  <script src="js/streak.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
